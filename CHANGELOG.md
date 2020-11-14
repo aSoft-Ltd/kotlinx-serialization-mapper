@@ -6,11 +6,11 @@
 - Updated to gradle version 6.7
 
 ## New Features
-- Added the `asyncTest()` method
-- Added the `AsyncTest` class
+- Added `Mapper.decodeFromString()`
+- Added `Mapper.encoderToString()`
 
 ## Documentation
 - Update readme
 
-## Samples
-- Added samples
+## Tests
+- Added tests

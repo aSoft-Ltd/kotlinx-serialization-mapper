@@ -1,29 +1,35 @@
-# Test
+# Kotlinx Serialization Mapper
 ![badge][badge-maven] ![badge][badge-mpp] ![badge][badge-android] ![badge][badge-js] ![badge][badge-jvm]
 
-An Opinionated testing library for kotlin multiplatform
-It supports
-- Kotlin Multiplatform libraries
-- Kotlin Javascript libraries
-- Kotlin Android libraries
-- Kotlin JVM libraries
-
 ## Introduction
-Ever wanted to test suspending functions from common code without hack's? This is your spot
+Built on top of the famous `kotlinx-serialization-json`, this library helps to serialize between json maps and kotlin maps. 
 
 ## Samples
-In your testing code, you can do the following
+Getting an map from a json
 ```kotlin
-    @Test
-    @JsName("Test0") // If targeting javascript
-    fun `should test a suspend function with no problem`() = asyncTest {
-        delayForFun()
-        // do suspending tasks here and perform assertions on the results
-    }
+val json = """
+{
+    "environment": "production",
+    "logging": "warnings",
+    "key": "SOME_TEST_KEY",
+    "bool": true,
+    "integer": 43,
+    "double": 46.55
+}
+""".trimIndent()
+
+val map = Mapper.decodeFromString(json)
+
+val environment: String by map
+val logging: String by map
+val key: String by map
+val bool: Boolean by map
+val integer: Int by map
+val double: Double by map
 ```
 
 ## Setup:Gradle
-Adding test as a dependency becomes as easy as just
+Adding `kotlinx-serialization-mapper` as a dependency becomes as easy as just
 ### Kotlin Multiplatform
 ```kotlin
 kotlin {
@@ -31,7 +37,7 @@ kotlin {
     sourceSets {
         val commonTest by getting {
             dependencies {
-                implementation("tz.co.asoft:test:+") // please use the latest version possible
+                implementation("tz.co.asoft:kotlinx-serialization-mapper:+") // please use the latest version possible
             }        
         }
     }
@@ -42,14 +48,14 @@ kotlin {
 kotlin {
     // . . .
     dependencies {
-        implementationTest("tz.co.asoft:test:+") // please use the latest version possible
+        implementationTest("tz.co.asoft:kotlinx-serialization-mapper:+") // please use the latest version possible
         /* Or
          * You can be as specific as
          * tz.co.asoft:test-android:+
          * tz.co.asoft:test-js:+
          * tz.co.asoft:test-jvm:+
         */
-        implementationTest("tz.co.asoft:test-android:+") // please use the latest version possible
+        implementationTest("tz.co.asoft:kotlinx-serialization-mapper-android:+") // please use the latest version possible
     }
 }
 ```

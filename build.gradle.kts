@@ -13,11 +13,6 @@ object vers {
     }
 }
 
-repositories {
-    google()
-    publicRepos()
-}
-
 kotlin {
     universalLib()
     sourceSets {
