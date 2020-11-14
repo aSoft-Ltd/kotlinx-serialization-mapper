@@ -1,13 +1,31 @@
 package tz.co.asoft
 
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.*
+import kotlin.reflect.KProperty
 
-fun Map<String, Any?>.getMap(key: String) = this[key] as Map<String, Any?>
-
-fun Map<String, Any?>.getList(key: String) = this[key] as List<Any?>
-
-fun <T : Any> T.toKotlinMap(serializer: KSerializer<T>): Map<String, Any> {
-    val json = Json.stringify(serializer, this)
-    return Json.parseKotlinMap(json)
+internal fun JsonElement.toKObject(): Any? = when (this) {
+    is JsonObject -> mapValues { it.value.toKObject() }
+    is JsonArray -> map { it.toKObject() }
+    JsonNull -> null
+    is JsonPrimitive -> content
 }
+
+internal fun JsonObject.toKMap(): Map<String, Any> {
+    val map = mutableMapOf<String, Any>()
+    for ((k, v) in this) v.toKObject()?.let { map[k] = it }
+    return map
+}
+
+internal fun Any.toJsonElement(): JsonElement = when (this) {
+    is Number -> JsonPrimitive(this)
+    is Boolean -> JsonPrimitive(this)
+    is String -> JsonPrimitive(this)
+    is Collection<*> -> JsonArray(mapNotNull { it?.toJsonElement() })
+    is Array<*> -> JsonArray(mapNotNull { it?.toJsonElement() })
+    is Map<*, *> -> JsonObject(map { (k, v) -> k.toString() to v!!.toJsonElement() }.toMap())
+    else -> error("Failed to map $this to JsonElement")
+}
+
+internal fun Map<String, Any>.toJsonObject() = JsonObject(
+    mapValues { (_, v) -> v.toJsonElement() }
+)

@@ -1,40 +1,41 @@
 plugins {
-//    id("asoft-lib")
-//    id("root-module")
+    id("com.android.library") version "4.1.0"
+    kotlin("multiplatform") version "1.4.10"
+    id("tz.co.asoft.library") version "0.0.7"
+    id("io.codearte.nexus-staging") version "0.22.0"
+    signing
 }
 
-//kotlin.sourceSets {
-//    val commonMain by getting {
-//        dependencies {
-//            api(kotlin("stdlib-common"))
-//            api("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:${versions.kotlinx.serialization}")
-//        }
-//    }
-//
-//    val commonTest by getting {
-//        dependencies {
-//            api(asoft("test"))
-//        }
-//    }
-//
-//    val androidMain by getting {
-//        dependencies {
-//            api(kotlin("stdlib"))
-//            api("org.jetbrains.kotlinx:kotlinx-serialization-runtime:${versions.kotlinx.serialization}")
-//        }
-//    }
-//
-//    val jvmMain by getting {
-//        dependencies {
-//            api(kotlin("stdlib"))
-//            api("org.jetbrains.kotlinx:kotlinx-serialization-runtime:${versions.kotlinx.serialization}")
-//        }
-//    }
-//
-//    val jsMain by getting {
-//        dependencies {
-//            api(kotlin("stdlib-js"))
-//            api("org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:${versions.kotlinx.serialization}")
-//        }
-//    }
-//}
+object vers {
+    object asoft {
+        val mapper = "0.0.1"
+        val test = "1.0.1"
+    }
+}
+
+repositories {
+    google()
+    publicRepos()
+}
+
+kotlin {
+    universalLib()
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                api("org.jetbrains.kotlinx:kotlinx-serialization-json:${versions.kotlinx.serialization}")
+            }
+        }
+
+        val commonTest by getting {
+            dependencies {
+                implementation(asoft("test", vers.asoft.test))
+            }
+        }
+    }
+}
+
+aSoftLibrary(
+    version = vers.asoft.mapper,
+    description = "A Kotlinx Serialization Extension for mapping between json objects and kotlin maps"
+)
