@@ -51,9 +51,9 @@ kotlin {
         implementationTest("tz.co.asoft:kotlinx-serialization-mapper:+") // please use the latest version possible
         /* Or
          * You can be as specific as
-         * tz.co.asoft:test-android:+
-         * tz.co.asoft:test-js:+
-         * tz.co.asoft:test-jvm:+
+         * "tz.co.asoft:kotlinx-serialization-mapper-android:+"
+         * "tz.co.asoft:kotlinx-serialization-mapper-jvm:+"
+         * "tz.co.asoft:kotlinx-serialization-mapper-js:+"
         */
         implementationTest("tz.co.asoft:kotlinx-serialization-mapper-android:+") // please use the latest version possible
     }
