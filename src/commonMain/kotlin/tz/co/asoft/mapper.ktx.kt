@@ -7,7 +7,11 @@ internal fun JsonElement.toKObject(): Any? = when (this) {
     is JsonObject -> mapValues { it.value.toKObject() }
     is JsonArray -> map { it.toKObject() }
     JsonNull -> null
-    is JsonPrimitive -> content
+    is JsonPrimitive -> if (isString) {
+        content
+    } else {
+        booleanOrNull ?: intOrNull ?: longOrNull ?: doubleOrNull
+    }
 }
 
 internal fun JsonObject.toKMap(): Map<String, Any> {
