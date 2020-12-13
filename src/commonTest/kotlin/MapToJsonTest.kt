@@ -5,8 +5,7 @@ import kotlin.test.assertEquals
 
 class MapToJsonTest {
     @Test
-    @JsName("Test0")
-    fun `should decode a map into a json`() {
+    fun should_decode_a_map_into_a_json() {
         val ogMap = mapOf(
             "name" to "John Doe",
             "age" to 34,

@@ -59,6 +59,7 @@ kotlin {
     }
 }
 ```
+
 [badge-maven]: https://img.shields.io/maven-central/v/tz.co.asoft/test/1.0.1?style=flat
 [badge-mpp]: https://img.shields.io/badge/kotlin-multiplatform-blue?style=flat
 [badge-android]: http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat

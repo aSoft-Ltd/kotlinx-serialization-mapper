@@ -5,25 +5,25 @@ import kotlin.test.assertEquals
 
 class JsonToMapTest {
     @Test
-    @JsName("test0")
-    fun `should parse a json to a map`() {
+    fun should_parse_a_json_to_a_map() {
         val json = """
             {
                 "name": "John Doe",
                 "age": 23,
-                "isYoung": true
+                "isYoung": true,
+                "weight": "23"
             }
         """.trimIndent()
 
         val map = Mapper.decodeFromString(json)
         assertEquals("John Doe", map["name"])
-        assertEquals("23", map["age"])
-        assertEquals("true", map["isYoung"])
+        assertEquals(23, map["age"])
+        assertEquals(true, map["isYoung"])
+        assertEquals("23", map["weight"])
     }
 
     @Test
-    @JsName("test1")
-    fun `should parse a nested json to a nested map`() {
+    fun should_parse_a_nested_json_to_a_nested_map() {
         val json = """
             {
                 "name": "John Doe",
