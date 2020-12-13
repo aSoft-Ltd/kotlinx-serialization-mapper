@@ -8,7 +8,7 @@ plugins {
 
 object vers {
     object asoft {
-        val mapper = "0.0.1"
+        val mapper = "0.0.2"
         val test = "1.0.1"
     }
 }
