@@ -29,9 +29,6 @@ jobs:
       - name: Making gradlew executable
         run: chmod +x ./gradlew
         working-directory: .
-      - name: Building the lib
-        run: ./gradlew build
-        working-directory: .
       - name: Publishing to sonatype nexus
         run: ./gradlew publish
         working-directory: .
