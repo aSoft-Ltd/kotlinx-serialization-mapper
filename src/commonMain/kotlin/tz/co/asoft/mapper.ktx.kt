@@ -20,13 +20,14 @@ internal fun JsonObject.toKMap(): Map<String, Any> {
     return map
 }
 
-internal fun Any.toJsonElement(): JsonElement = when (this) {
+internal fun Any?.toJsonElement(): JsonElement = when (this) {
+    null -> JsonNull
     is Number -> JsonPrimitive(this)
     is Boolean -> JsonPrimitive(this)
     is String -> JsonPrimitive(this)
-    is Collection<*> -> JsonArray(mapNotNull { it?.toJsonElement() })
-    is Array<*> -> JsonArray(mapNotNull { it?.toJsonElement() })
-    is Map<*, *> -> JsonObject(map { (k, v) -> k.toString() to v!!.toJsonElement() }.toMap())
+    is Collection<*> -> JsonArray(mapNotNull { it.toJsonElement() })
+    is Array<*> -> JsonArray(mapNotNull { it.toJsonElement() })
+    is Map<*, *> -> JsonObject(map { (k, v) -> k.toString() to v.toJsonElement() }.toMap())
     else -> error("Failed to map $this to JsonElement")
 }
 
