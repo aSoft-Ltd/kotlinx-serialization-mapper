@@ -31,6 +31,6 @@ internal fun Any?.toJsonElement(): JsonElement = when (this) {
     else -> error("Failed to map $this to JsonElement")
 }
 
-internal fun Map<String, Any>.toJsonObject() = JsonObject(
+internal fun Map<String, *>.toJsonObject() = JsonObject(
     mapValues { (_, v) -> v.toJsonElement() }
 )
