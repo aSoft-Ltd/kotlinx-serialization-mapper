@@ -1,6 +1,7 @@
 import tz.co.asoft.Mapper
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.expect
 
 class NullValuesTest {
     @Test
@@ -24,6 +25,8 @@ class NullValuesTest {
     fun should_decode_nulls_too() {
         val json = """{"test":true,"again":null,"names":["test1","test2"],"map":{"people":null,"enjoyment":4},"id":1}"""
         val map = Mapper.decodeFromString(json)
-        assertEquals(null, map["admin"])
+        println(map.toMap())
+        expect(true) { map.containsKey("again") }
+        assertEquals(null, map["again"])
     }
 }
