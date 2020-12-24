@@ -1,3 +1,6 @@
+# 0.0.4 : 2020.12.24
+- Enabled serialization and deserialization of null values as well
+
 # 0.0.3 : 2020.12.24
 - Updated to kotlin 1.4.21
 - Upgraded to gradle 6.7.1
