@@ -12,7 +12,7 @@ open class Mapper(internal val JSON: Json) {
         JSON.decodeFromString(JsonObject.serializer(), json).toKMap()
     )
 
-    fun encodeToString(map: Map<String, Any>) = JSON.encodeToString(
+    fun encodeToString(map: Map<String, *>) = JSON.encodeToString(
         JsonObject.serializer(), map.toJsonObject()
     )
 }
