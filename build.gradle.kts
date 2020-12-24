@@ -11,7 +11,7 @@ object vers {
         val serialization = "1.0.1"
     }
     object asoft {
-        val mapper = "0.0.3"
+        val mapper = "0.0.5"
         val test = "1.0.1"
     }
 }
