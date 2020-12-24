@@ -14,9 +14,9 @@ internal fun JsonElement.toKObject(): Any? = when (this) {
     }
 }
 
-internal fun JsonObject.toKMap(): Map<String, Any> {
-    val map = mutableMapOf<String, Any>()
-    for ((k, v) in this) v.toKObject()?.let { map[k] = it }
+internal fun JsonObject.toKMap(): Map<String, Any?> {
+    val map = mutableMapOf<String, Any?>()
+    for ((k, v) in this) map[k] = v.toKObject()
     return map
 }
 
