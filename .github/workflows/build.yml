@@ -20,13 +20,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      - name: Cache Konan
+      - name: Cache konan
         uses: actions/cache@v2
         with:
-          path: ~/.konan/cache
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
           key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
-          restore-keys: |
-            ${{ runner.os }}-konan-
+          restore-keys: ${{ runner.os }}-konan-
       - name: Building lib
         run: |
           chmod +x ./gradlew
