@@ -1,7 +1,6 @@
-package tz.co.asoft
+package kotlinx.serialization.mapper
 
 import kotlinx.serialization.json.*
-import kotlin.reflect.KProperty
 
 internal fun JsonElement.toKObject(): Any? = when (this) {
     is JsonObject -> mapValues { it.value.toKObject() }

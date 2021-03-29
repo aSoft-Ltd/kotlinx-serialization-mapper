@@ -1,3 +1,9 @@
+# 0.0.60 : 2021.03.29
+- Updated kotlin from 1.4.21 to 1.4.31
+- Updated gradle from 6.7.1 to 6.8.1
+- Bumped serialization from 1.0.1 to 1.1.0
+- Removed android gradle plugin
+
 # 0.0.4 : 2020.12.24
 - Enabled serialization and deserialization of null values as well
 
