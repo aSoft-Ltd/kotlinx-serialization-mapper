@@ -26,6 +26,13 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache Konan
+        uses: actions/cache@v2
+        with:
+          path: ~/.konan/cache
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          restore-keys: |
+            ${{ runner.os }}-konan-
       - name: Making gradlew executable
         run: chmod +x ./gradlew
         working-directory: .
