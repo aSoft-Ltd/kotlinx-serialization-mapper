@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.4.31"
+    kotlin("multiplatform") version "1.4.21"
     id("tz.co.asoft.library") version "1.3.0"
     id("io.codearte.nexus-staging") version "0.22.0"
     signing
