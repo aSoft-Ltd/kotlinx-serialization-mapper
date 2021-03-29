@@ -1,4 +1,4 @@
-import tz.co.asoft.Mapper
+import kotlinx.serialization.mapper.Mapper
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.expect

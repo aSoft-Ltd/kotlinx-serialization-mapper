@@ -1,9 +1,8 @@
-package tz.co.asoft
+package kotlinx.serialization.mapper
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonBuilder
 import kotlinx.serialization.json.JsonObject
-import kotlin.jvm.JvmStatic
 
 open class Mapper(internal val JSON: Json) {
     companion object Default : Mapper(JSON = Json { })

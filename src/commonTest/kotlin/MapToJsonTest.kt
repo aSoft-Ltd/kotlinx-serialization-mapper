@@ -1,5 +1,4 @@
-import tz.co.asoft.Mapper
-import kotlin.js.JsName
+import kotlinx.serialization.mapper.Mapper
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

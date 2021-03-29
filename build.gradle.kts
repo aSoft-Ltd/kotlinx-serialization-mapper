@@ -1,23 +1,34 @@
 plugins {
-    id("com.android.library") version "4.1.0"
-    kotlin("multiplatform") version "1.4.21"
-    id("tz.co.asoft.library") version "1.2.0"
+    kotlin("multiplatform") version "1.4.31"
+    id("tz.co.asoft.library") version "1.3.0"
     id("io.codearte.nexus-staging") version "0.22.0"
     signing
 }
 
 object vers {
     object kotlinx {
-        val serialization = "1.0.1"
+        val serialization = "1.1.0"
     }
+
     object asoft {
-        val mapper = "0.0.5"
-        val test = "1.0.1"
+        val mapper = "0.0.60"
+        val test = "1.1.20"
     }
 }
 
 kotlin {
-    universalLib()
+    multiplatformLib()
+    js(IR) {
+        browser {
+            testTask { enabled = false }
+        }
+    }
+    macosX64()
+    ios()
+    tvos()
+    linuxArm64()
+    linuxX64()
+    linuxArm32Hfp()
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -27,7 +38,7 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(asoft("test", vers.asoft.test))
+                implementation(asoft("test-core", vers.asoft.test))
             }
         }
     }

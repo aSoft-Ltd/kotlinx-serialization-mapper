@@ -1,4 +1,4 @@
-package tz.co.asoft
+package kotlinx.serialization.mapper
 
 import kotlin.reflect.KProperty
 

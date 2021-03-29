@@ -2,11 +2,11 @@ name: Build & Test
 
 on:
   pull_request:
-    branches: [ dev-master ]
+    branches: [ master-dev ]
 
 jobs:
   build-lib:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -20,6 +20,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache konan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          restore-keys: ${{ runner.os }}-konan-
       - name: Building lib
         run: |
           chmod +x ./gradlew
