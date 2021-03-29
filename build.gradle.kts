@@ -7,7 +7,7 @@ plugins {
 
 object vers {
     object kotlinx {
-        val serialization = "1.1.0"
+        val serialization = "1.0.1"
     }
 
     object asoft {
