@@ -1,3 +1,8 @@
+# 0.0.70 : 2021.05.02
+
+- Added kotlin support
+- Added other native targets
+
 # 0.0.60 : 2021.03.29
 
 - Updated kotlin from 1.4.21 to 1.4.31
