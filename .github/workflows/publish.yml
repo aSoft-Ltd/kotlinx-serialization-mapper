@@ -32,7 +32,7 @@ jobs:
           path: |
             ~/.konan/dependencies
             ~/.konan/kotlin-native-macos*
-          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.konan*') }}
+          key: ${{ runner.os }}-konan-
           restore-keys: ${{ runner.os }}-konan-
       - name: Making gradlew executable
         run: chmod +x ./gradlew
