@@ -14,6 +14,16 @@ open class Mapper(internal val JSON: Json) {
     fun encodeToString(map: Map<String, *>) = JSON.encodeToString(
         JsonObject.serializer(), map.toJsonObject()
     )
+
+    fun encodeToString(list: List<Map<String, *>>) = list.joinToString(
+        separator = ",", prefix = "[", postfix = "]"
+    ) { encodeToString(it) }
+
+    fun decodeListFromString(json: String): List<Map<String, *>> {
+        val raw = """{"data":$json}"""
+        val data: List<Map<String, *>> by decodeFromString(raw)
+        return data
+    }
 }
 
 fun Mapper(from: Mapper = Mapper, builder: JsonBuilder.() -> Unit) = Mapper(JSON = Json(from.JSON, builder))
