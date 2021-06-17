@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.5.0"
+    kotlin("multiplatform") version "1.5.10"
     id("tz.co.asoft.library") version "1.3.30"
     id("io.codearte.nexus-staging") version "0.22.0"
     signing
@@ -7,12 +7,12 @@ plugins {
 
 object vers {
     object kotlinx {
-        val serialization = "1.2.0"
+        val serialization = "1.2.1"
     }
 
     object asoft {
-        val mapper = "0.0.70"
-        val test = "1.1.30"
+        val mapper = "0.0.71"
+        val expect = "0.0.30"
     }
 }
 
@@ -45,7 +45,7 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(asoft("test-core", vers.asoft.test))
+                implementation(asoft("expect-core", vers.asoft.expect))
             }
         }
     }
