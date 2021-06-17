@@ -45,7 +45,7 @@ kotlin {
     sourceSets {
         val commonTest by getting {
             dependencies {
-                implementation("tz.co.asoft:kotlinx-serialization-mapper:0.0.70") // please use the latest version possible
+                implementation("tz.co.asoft:kotlinx-serialization-mapper:0.0.71") // please use the latest version possible
             }
         }
     }
@@ -58,12 +58,12 @@ kotlin {
 kotlin {
     // . . .
     dependencies {
-        implementationTest("tz.co.asoft:kotlinx-serialization-mapper:0.0.70")
+        implementationTest("tz.co.asoft:kotlinx-serialization-mapper:0.0.71")
     }
 }
 ```
 
-[badge-maven]: https://img.shields.io/maven-central/v/tz.co.asoft/kotlinx-serialization-mapper/0.0.70?style=flat
+[badge-maven]: https://img.shields.io/maven-central/v/tz.co.asoft/kotlinx-serialization-mapper/0.0.71?style=flat
 
 [badge-mpp]: https://img.shields.io/badge/kotlin-multiplatform-blue?style=flat
 
