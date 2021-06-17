@@ -1,3 +1,9 @@
+# 0.0.71 : 2021.06.17
+
+- Upgraded kotlin from 1.5.0 to 1.5.10
+- Upgraded gradle from 6.8.2 to 7.0.2
+- Added support for serializing list of maps
+
 # 0.0.70 : 2021.05.02
 
 - Added kotlin support
